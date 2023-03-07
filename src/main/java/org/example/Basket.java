@@ -7,6 +7,9 @@ public class Basket {
     protected String[] productsInBasket; //Названия продуктов
     protected int[] amountProduct; //Количество продуктов
 
+    public Basket() {
+    }
+
     //конструктор, принимающий массив цен и названий продуктов;
     public Basket(int[] prices, String[] productsInBasket) {
         this.prices = prices;
@@ -102,17 +105,17 @@ public class Basket {
     public static Basket loadFromTxtFile(File textFile) {
         int sizeBasket = 0;
         String sizeBasketStr;
-        String[] productsInBasketB = null;
-        int[] amountB = null;
-        Basket basket = null;
-        int[] pricesB = null;
+        String[] productsInBasketB;
+        int[] amountB;
+        Basket basket = new Basket();
+        int[] pricesB;
 
         try (BufferedReader br = new BufferedReader(new FileReader(textFile))) {
             //чтение построчно
             String productStr;
             String priseStr;
             String amountStr;
-            String sumPriseStr;
+
             //Считываем размер корзины
             if ((sizeBasketStr = br.readLine()) != null) {
                 sizeBasket = Integer.parseInt(sizeBasketStr);
@@ -120,14 +123,11 @@ public class Basket {
             }
 
             int ap = sizeBasket;
-            String[] pricesBstr = new String[ap]; //Цены String
+            String[] pricesBstr; //Цены String
             pricesB = new int[ap]; //Цены int
-            String[] amountBstr = new String[ap]; //Количество  String
+            String[] amountBstr; //Количество  String
             amountB = new int[ap]; //Количество  int
-            String[] pricesBsumStr = new String[ap]; //суммарные Цены String
-            int[] pricesBsum = new int[ap]; //Суммарные Цены int
             productsInBasketB = new String[ap]; //Названия продуктов
-
 
             //Читаем строку с продуктами
             if ((productStr = br.readLine()) != null) {   //productStr = br.readLine();
@@ -153,7 +153,7 @@ public class Basket {
             }
 
             basket = new Basket(pricesB, productsInBasketB, amountB);
-            //  return basket;
+
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
