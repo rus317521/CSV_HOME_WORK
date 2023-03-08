@@ -102,7 +102,7 @@ public class Basket {
     //static Basket loadFromTxtFile(File textFile) - статический(!)
     // метод восстановления объекта корзины из текстового файла,
     // в который ранее была она сохранена;
-    public static Basket loadFromTxtFile(File textFile) {
+    public Basket loadFromTxtFile(File textFile) {
         int sizeBasket = 0;
         String sizeBasketStr;
         String[] productsInBasketB;
